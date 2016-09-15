@@ -1,0 +1,1 @@
+var monui = angular.module('monui', ['ngRoute', 'googlechart', 'ngTable', 'toaster']);

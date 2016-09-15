@@ -1,0 +1,20 @@
+{
+  "name": "bandmon-es",
+  "version": "0.0.0",
+  "description": "",
+  "main": "bandmoninsert.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.siginttech.com:jeff/bandwidth-monitor.git"
+  },
+  "author": "Jeff Klassen",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "async": "^1.5.0",
+    "elasticsearch": "~8.2.0",
+    "stream-splitter": "^0.3.2"
+  }
+}

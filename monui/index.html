@@ -1,0 +1,78 @@
+<!doctype html>
+<html ng-app="monui">
+
+<head>
+
+    <script src="/monui/js/lib/jquery/jquery.js"></script>
+    <script src="/monui/js/lib/angular/angular.js"></script>
+
+    <script src="/monui/js/lib/angular/angular-resource.js"></script>
+    <script src="/monui/js/lib/angular/angular-route.js"></script>
+    <script src="/monui/js/lib/angular/angular-animate.js"></script>
+    <script src="/monui/js/lib/toaster/toaster.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="/monui/css/font-awesome.css" rel="stylesheet">
+    <link href="/monui/css/ng-table.css" rel="stylesheet">
+    <link href="/monui/css/bootstrap.css" rel="stylesheet">
+
+    <link href="/monui/css/toaster.css" rel="stylesheet">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="/monui/js/lib/bootstrap/bootstrap.min.js"></script>
+    <script src="/monui/js/lib/google-chart/ng-google-chart.js"></script>
+
+    <script src="/monui/js/lib/ng-table/ng-table.js"></script>
+
+
+    <script src="/monui/app.js"></script>
+    <script src="/monui/constants.js"></script>
+
+    <script src="/monui/factories/apiFactory.js"></script>
+    <script src="/monui/factories/baseChartFactory.js"></script>
+    <script src="/monui/factories/bandwidthChartFactory.js"></script>
+    <script src="/monui/factories/detailChartFactory.js"></script>
+    <script src="/monui/factories/BWToDateFactory.js"></script>
+    <script src="/monui/factories/detailReportFactory.js"></script>
+    <script src="/monui/routing.js"></script>
+    <script src="/monui/realtimeCtrl.js"></script>
+    <script src="/monui/summariesCtrl.js"></script>
+
+</head>
+
+<body>
+
+    <div class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/monui">band mon</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-inverse-collapse">
+            <ul class="nav navbar-nav">
+
+                <li>
+                    <a href="#/realtime">Real Time</a>
+                </li>
+                <li>
+                    <a href="#/summaries">Summaries</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+
+    <div class="container main">
+
+
+        <div ng-view></div>
+    </div>
+
+    <script>
+    </script>
+</body>
+
+</html>

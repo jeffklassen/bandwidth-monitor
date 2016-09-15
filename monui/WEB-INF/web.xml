@@ -1,0 +1,4 @@
+<servlet>
+      <servlet-name>MonUi</servlet-name>
+      <html-file>app.html</html-file>
+ </servlet>
