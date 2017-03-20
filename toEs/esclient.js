@@ -7,19 +7,20 @@ process.on('message', function (msg) {
     }
 });
 
-
+const hosts = [
+    process.env.ES1,
+    process.env.ES2,
+    process.env.ES3,
+    process.env.ES4
+];
+console.log('HOSTSHOSTSHOSTSHOSTSHOSTSHOSTS', hosts);
 function getClient() {
 
     // Connect the client to the following nodes, requests will be
     // load-balanced between them using round-robin
     return client = elasticsearch.Client({
         requestTimeout: 240000,
-        hosts: [
-            process.env.ES1,
-            process.env.ES2,
-            process.env.ES3,
-            process.env.ES4
-        ]
+        hosts: hosts
     });
 };
 
