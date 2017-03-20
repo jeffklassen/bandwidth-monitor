@@ -1,10 +1,11 @@
 {
   "name": "bandmon-es",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "bandmoninsert.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bandmoninsert.js"
   },
   "repository": {
     "type": "git",
