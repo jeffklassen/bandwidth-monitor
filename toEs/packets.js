@@ -8,7 +8,7 @@ function Packets() {
         //console.log(line);
 
         if (line.indexOf('length') != -1 && line.indexOf(' IP ') != -1) {
-            this.packet =  parsePacketMeta(line);
+            this.packet =  packetParser(line);
             //console.log('PACKET WAS ADDED');
             this.emit('packetAdded');
         } else {
