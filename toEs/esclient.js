@@ -15,10 +15,10 @@ function getClient() {
     return client = elasticsearch.Client({
         requestTimeout: 240000,
         hosts: [
-            'es1:9200',
-            'es2:9200',
-            'es3:9200',
-            'es4:9200'
+            process.env.ES1,
+            process.env.ES2,
+            process.env.ES3,
+            process.env.ES4
         ]
     });
 };
