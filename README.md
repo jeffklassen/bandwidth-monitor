@@ -15,6 +15,6 @@ The application consists of two parts:
      ![summaries](http://i.imgur.com/bLcOG4k.png "Historical")
   2. The realtime view -
    
-    ![realtime](http://i.imgur.com/4aSSu1Y.png "realtime")
+     ![realtime](http://i.imgur.com/4aSSu1Y.png "realtime")
      Also with summaries. Accessible by selecting any two spots on the scrolling graph.
 
