@@ -46,31 +46,31 @@ public class ESBandwidthDao implements BandwidthDao {
 	}
 
 	private Client getClient() {
+		logger.error("get client called");
 		if (this.client == null ) {
 			Client client = null;
+				logger.error("client does not exist, creating client");
 			try {
 				client = TransportClient
 						.builder()
 						.settings(
 								Settings.builder()
-										.put("cluster.name", "jeff-es").build())
+										.put("cluster.name", "coolcluster").build())
 						.build()
 						.addTransportAddress(
 								new InetSocketTransportAddress(InetAddress
-										.getByName("192.168.1.41"), 9300))
+										.getByName("es1"), 9300))
 						.addTransportAddress(
 								new InetSocketTransportAddress(InetAddress
-										.getByName("192.168.1.42"), 9200))
+										.getByName("es2"), 9300))
 						.addTransportAddress(
 								new InetSocketTransportAddress(InetAddress
-										.getByName("192.168.1.43"), 9300))
+										.getByName("es3"), 9300))
 						.addTransportAddress(
 								new InetSocketTransportAddress(InetAddress
-										.getByName("192.168.1.44"), 9300))
-						.addTransportAddress(
-								new InetSocketTransportAddress(InetAddress
-										.getByName("192.168.1.45"), 9300));
+										.getByName("es4"), 9300));
 				this.client = client;
+				logger.error("client created.");
 			} catch (UnknownHostException e) {
 				logger.error(e);
 			}
@@ -87,8 +87,12 @@ public class ESBandwidthDao implements BandwidthDao {
 	public List<BandwidthImpl> getLastEntries(final Time table,
 			final int numEntries) {
 		logger.debug("table: " + getTableName(table));
-
+	if(getClient() == null)
+			{
+				logger.error("HEY CLIENT DOES NOT EXIST!");
+			}
 		ESExecutor executor = new ESExecutor(getClient()) {
+		
 			protected SearchResponse getSearchResponse() {
 				SearchRequestBuilder searchRequestBuilder = client
 						.prepareSearch("bmon")
