@@ -37,7 +37,7 @@ var datacleaner = require('./cleandata');
 
 // collect input from TCP dump
 var spawn = require('child_process').spawn;
-var tcpdump = spawn('tcpdump', ['-i', 'eth1']);
+var tcpdump = spawn('tcpdump', ['-i', process.env.INTERFACE]);
 
 //handles splitting buffers by tokens
 var StreamSplitter = require("stream-splitter");
