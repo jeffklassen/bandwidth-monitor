@@ -1,33 +1,38 @@
-function Packet(line) {
 
-    var getDateTime = function (dateString) {
-        var now = new Date();
-        var hour = parseInt(dateString.substr(0, 2));
-        var minute = parseInt(dateString.substr(3, 2));
-        var second = parseInt(dateString.substr(6, 2));
-        
-        return new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour, minute, second, 0);
-    };
+const getDateTime = function (dateString) {
+    let now = new Date();
+    let hour = parseInt(dateString.substr(0, 2));
+    let minute = parseInt(dateString.substr(3, 2));
+    let second = parseInt(dateString.substr(6, 2));
+
+    return new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour, minute, second, 0);
+};
+function packetParser(line) {
+    let packetMeta = {};
+
 
     line = line.trim();
 
-    var currIndex = line.indexOf(' ');
+    let currIndex = line.indexOf(' ');
 
-    this.dateTime = getDateTime(line.substr(0, currIndex));
+    packetMeta.dateTime = getDateTime(line.substr(0, currIndex));
     currIndex = line.indexOf(' ', currIndex + 1);
 
-    this.sourceAddr = line.substr(currIndex, line.indexOf('>') - currIndex).trim();
-    this.sourcePort = this.sourceAddr.substr(this.sourceAddr.lastIndexOf('.') + 1);
-    this.sourceAddr = this.sourceAddr.substr(0, this.sourceAddr.lastIndexOf('.')).trim();
+    packetMeta.sourceAddr = line.substr(currIndex, line.indexOf('>') - currIndex).trim();
+    packetMeta.sourcePort = packetMeta.sourceAddr.substr(packetMeta.sourceAddr.lastIndexOf('.') + 1);
+    packetMeta.sourceAddr = packetMeta.sourceAddr.substr(0, packetMeta.sourceAddr.lastIndexOf('.')).trim();
 
     currIndex = line.indexOf('>', currIndex) + 1;
 
-    this.destAddr = line.substr(currIndex, line.indexOf(' ', currIndex + 1) - currIndex);
-    this.destPort = this.destAddr.substr(this.destAddr.lastIndexOf('.') + 1);
-    this.destPort = this.destPort.substr(0, this.destPort.length - 1);
-    this.destAddr = this.destAddr.substr(0, this.destAddr.lastIndexOf('.')).trim();
+    packetMeta.destAddr = line.substr(currIndex, line.indexOf(' ', currIndex + 1) - currIndex);
+    packetMeta.destPort = packetMeta.destAddr.substr(packetMeta.destAddr.lastIndexOf('.') + 1);
+    packetMeta.destPort = packetMeta.destPort.substr(0, packetMeta.destPort.length - 1);
+    packetMeta.destAddr = packetMeta.destAddr.substr(0, packetMeta.destAddr.lastIndexOf('.')).trim();
 
-    this.size = parseInt(line.substr(line.lastIndexOf(' ')).trim());
+    packetMeta.size = parseInt(line.substr(line.indexOf(' ', line.indexOf('length'))).trim());
+
+    return packetMeta;
+
 }
 
-module.exports = Packet;
+module.exports = packetParser;

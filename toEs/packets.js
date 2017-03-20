@@ -1,5 +1,5 @@
 var events = require('events');
-var Packet = require('./packet');
+var packetParser = require('./packet');
 
 function Packets() {
     events.EventEmitter.call(this);
@@ -8,7 +8,7 @@ function Packets() {
         //console.log(line);
 
         if (line.indexOf('length') != -1 && line.indexOf(' IP ') != -1) {
-            this.packet = new Packet(line);
+            this.packet =  parsePacketMeta(line);
             //console.log('PACKET WAS ADDED');
             this.emit('packetAdded');
         } else {
